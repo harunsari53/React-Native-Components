@@ -1,22 +1,15 @@
-import { NativeModules, Platform } from 'react-native';
+import * as React from 'react';
+import { PaperProvider } from 'react-native-paper';
 
-const LINKING_ERROR =
-  `The package 'general-components' doesn't seem to be linked. Make sure: \n\n` +
-  Platform.select({ ios: "- You have run 'pod install'\n", default: '' }) +
-  '- You rebuilt the app after installing the package\n' +
-  '- You are not using Expo Go\n';
+import Button from './Button';
+import Icon from './Icon';
+import Input from './Input';
+import View from './View';
 
-const GeneralComponents = NativeModules.GeneralComponents
-  ? NativeModules.GeneralComponents
-  : new Proxy(
-      {},
-      {
-        get() {
-          throw new Error(LINKING_ERROR);
-        },
-      }
-    );
+export { Button, Icon, Input, View };
 
-export function multiply(a: number, b: number): Promise<number> {
-  return GeneralComponents.multiply(a, b);
-}
+const ComponentsProvider = ({ children }: any) => {
+  <PaperProvider>{children}</PaperProvider>;
+};
+
+export default ComponentsProvider;
