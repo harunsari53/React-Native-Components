@@ -1,8 +1,3 @@
-/*
- * iBurda
- * created by: Volkan Suner on September 15, 2021
- */
-
 export type FontAwesomeGlyphs =
 	| 'glass : font'
 	| 'music : font'
